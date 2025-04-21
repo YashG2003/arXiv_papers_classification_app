@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python -m pipelines.preprocess
+    deps:
+    - path: data/raw/arxiv100.csv
+      hash: md5
+      md5: 54b042d5ca77ce99396c968089af386c
+      size: 114628396
+    - path: data_processing/versioning.py
+      hash: md5
+      md5: fc11e9ed7ea9d5613768e1812db9e886
+      size: 2911
+    outs:
+    - path: data/metrics/processing_metrics.json
+      hash: md5
+      md5: 5272988d30cd89b5957ef7a401a1c2da
+      size: 263
+    - path: data/processed/v1
+      hash: md5
+      md5: c2c2c6c13f115d0d6b7ece580a37ea66.dir
+      size: 38162643
+      nfiles: 3
+    - path: data/processed/v2
+      hash: md5
+      md5: e70093c0d0e2622ea432507f79bc3502.dir
+      size: 38188788
+      nfiles: 3
+    - path: data/processed/v3
+      hash: md5
+      md5: a082086fbdcf6591be1c5f98dd5cbcf1.dir
+      size: 38377142
+      nfiles: 3
+  validate:
+    cmd: python -m pipelines.validate
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 3f3ee1765bad3b819a87d5059ff00fb1.dir
+      size: 114728588
+      nfiles: 10
+    outs:
+    - path: data/metrics/validation_report.json
+      hash: md5
+      md5: 31bd95c5b37bff0ec7c9835dfa6c4801
+      size: 2871

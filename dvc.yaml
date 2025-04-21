@@ -1,0 +1,19 @@
+stages:
+  preprocess:
+    cmd: python -m pipelines.preprocess
+    deps:
+      - data/raw/arxiv100.csv
+      - data_processing/versioning.py
+    outs:
+      - data/processed/v1
+      - data/processed/v2
+      - data/processed/v3
+    metrics:
+      - data/metrics/processing_metrics.json
+
+  validate:
+    cmd: python -m pipelines.validate
+    deps:
+      - data/processed
+    metrics:
+      - data/metrics/validation_report.json
