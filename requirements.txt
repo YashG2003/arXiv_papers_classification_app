@@ -8,5 +8,22 @@ tqdm==4.66.1
 nltk==3.8.1
 transformers==4.36.2
 
-# Deep Learning
+# Deep Learning (CPU-only)
 torch==2.1.2
+
+mlflow==2.10.0
+
+# additional for app
+# same numpy, pandas, mlflow versions as above and below dependencies
+fastapi==0.110.0
+uvicorn==0.27.1
+pydantic==2.5.0
+streamlit==1.31.1
+requests==2.31.0
+PyPDF2==3.0.1
+python-multipart==0.0.20
+apscheduler==3.11.0
+prometheus_client==0.21.1
+dvc==3.59.1
+
+

@@ -11,9 +11,32 @@ stages:
     metrics:
       - data/metrics/processing_metrics.json
 
-  validate:
-    cmd: python -m pipelines.validate
+  train:
+    cmd: python -m pipelines.train --data_version v1 --run_experiments
     deps:
-      - data/processed
+      - data/processed/v1
+      - model/bert_trainer.py
+      - pipelines/train.py
     metrics:
-      - data/metrics/validation_report.json
+      - models/metrics/train_metrics.json
+
+  fine_tune:
+    cmd: python -m pipelines.fine_tune --data_version v2
+    deps:
+      - data/processed/v2
+      - model/bert_trainer.py
+      - pipelines/fine_tune.py
+    metrics:
+      - models/metrics/fine_tune_metrics.json
+      
+  check_feedback:
+    cmd: python -m pipelines.fine_tune --check_feedback
+    deps:
+      - data/feedback/user_corrections.csv
+      - model/bert_trainer.py
+      - pipelines/fine_tune.py
+    metrics:
+      - models/metrics/feedback_fine_tune_metrics.json
+    always_changed: true
+
+

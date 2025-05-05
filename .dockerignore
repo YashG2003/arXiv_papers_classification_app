@@ -1,10 +1,8 @@
 .dvc
 arxiv_env
-data
 mlartifacts
 mlruns
 models
 pytorch_model
-bert_model.pt
+bert_model.pt 
 dvc.lock
-.dvcignore

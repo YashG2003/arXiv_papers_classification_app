@@ -31,8 +31,8 @@ class Config:
     
     # Training
     BERT_MODEL_NAME = "prajjwal1/bert-tiny"
-    BATCH_SIZE = 64
-    EPOCHS = 5
+    BATCH_SIZE = 16
+    EPOCHS = 3
     LEARNING_RATE = 3e-5
     
     @classmethod
